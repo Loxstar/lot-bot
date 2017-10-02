@@ -4,9 +4,14 @@ public class Spaceship {
     private String licensePlate;
     private String color;
 
+
+
     public Spaceship(String licensePlate, String color) {
         this.licensePlate = licensePlate;
         this.color = color;
+    }
+
+    public Spaceship() {
     }
 
     public String getShipId() {
