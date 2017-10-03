@@ -30,7 +30,7 @@ public class Lot {
     public static Lot createLot() {
         Lot l = new Lot();
         l.setId(NUM_CREATED++);
-        l.setSpaces(new Space[(int) (Math.random() * 50)]);
+        l.setSpaces(new Space[12]);
 
         return l;
     }
