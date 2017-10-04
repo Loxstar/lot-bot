@@ -3,20 +3,20 @@ package com.example.lotbot;
 
 // TODO: Write this.
 public class Space {
-    private Transaction spot;
+    private Transaction gimmeCash;
 
     public Space() {
     }
 
-    public Space(Transaction spot) {
-        this.spot = spot;
+    public Space(Transaction gimmeCash) {
+        this.gimmeCash = gimmeCash;
     }
 
-    public Transaction getSpot() {
-        return spot;
+    public Transaction getGimmeCash() {
+        return gimmeCash;
     }
 
-    public void setSpot(Transaction spot) {
-        this.spot = spot;
+    public void setGimmeCash(Transaction gimmeCash) {
+        this.gimmeCash = gimmeCash;
     }
 }

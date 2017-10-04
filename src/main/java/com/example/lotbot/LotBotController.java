@@ -25,18 +25,35 @@ public class LotBotController {
 
     @CrossOrigin
     @RequestMapping(path = "/lots/{id}", method = RequestMethod.GET)
-    public Lot getShipId(@PathVariable int id) { return lots.get(id); }
+    public Lot getShipId(@PathVariable int id) {
+        return lots.get(id);
+    }
 
     @CrossOrigin
     @RequestMapping(path = "/lots/{id}/{spot}", method = RequestMethod.POST)
     public void addSpaceship(@PathVariable int id, @PathVariable int spot, @RequestBody Spaceship spaceship) {
-     Transaction tran = new Transaction(LocalDateTime.now(), spaceship);
-     transactions.add(tran);
-     lots.get(id).getSpaces()[spot] = new Space();
-        lots.get(id).getSpaces()[spot].setSpot(tran);
+        Transaction tran = new Transaction(LocalDateTime.now(), spaceship);
+        transactions.add(tran);
+        lots.get(id).getSpaces()[spot] = new Space();
+        lots.get(id).getSpaces()[spot].setGimmeCash(tran);
     }
 
+    @CrossOrigin
+    @RequestMapping(path = "/lots/{id}/{spot}", method = RequestMethod.PUT)
+    public double leaveSpot(@PathVariable int id, @PathVariable int spot) {
+        Transaction tr = lots.get(id).getSpaces()[spot].getGimmeCash();
+        tr.setCheckedOutDate(LocalDateTime.now());
+        double time = DateHelper.getHoursBetweenDates(tr.getCheckedInDate(), tr.getCheckedOutDate());
+        tr.setPrice(time * 4);
+        lots.get(id).getSpaces()[spot].setGimmeCash(null);
+        return tr.getPrice();
+    }
 
+    @CrossOrigin
+    @RequestMapping(path = "/transaction", method = RequestMethod.GET)
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
 
     /**
      * The @PostConstruct method will cause whichever

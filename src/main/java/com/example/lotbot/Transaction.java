@@ -9,7 +9,8 @@ public class Transaction {
     private Spaceship spaceship;
     private double price;
 
-
+    public Transaction() {
+    }
 
     public Transaction(LocalDateTime checkedInDate, LocalDateTime checkedOutDate, Spaceship spaceship, double price) {
         this.checkedInDate = checkedInDate;
