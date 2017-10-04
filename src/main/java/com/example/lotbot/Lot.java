@@ -32,6 +32,9 @@ public class Lot {
         l.setId(NUM_CREATED++);
         l.setSpaces(new Space[12]);
 
+        for (int i = 0; i < l.getSpaces().length; i++) {
+        l.getSpaces()[i] = new Space();
+        }
         return l;
     }
 }
